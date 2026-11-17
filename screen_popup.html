@@ -1,0 +1,88 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Fun For All Software - Popup</title>
+	<style type="text/css">
+		a{ text-decoration: underline; }
+		a:hover{ text-decoration: underline; }
+		td
+		{
+			font-size: 9pt;
+			font-family: Verada, Tahoma, Helvetica, sans-serif
+		}
+	</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SE1W9QXRFW"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-SE1W9QXRFW');
+	</script>
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<div align="left">
+    <table border="0" width="100%" cellspacing="0" cellpadding="3" align="left">
+        <tr>
+            <td id="titleBar" width="100%" valign="middle" align="center" nowrap bgcolor="Brown" class="header"><font color="white">
+				<label id="titleText" style="font-size: 14px;">Screen Shot</label>
+			</font></td>
+        </tr>
+        <tr>
+            <td width="100%" valign="top" align="center"><img id="myImage" border=0 src="./images/loading.gif"></td>
+        </tr>
+        <tr>
+            <td width="100%" valign="middle" align="center" nowrap><a href="#" onclick="self.close();">close</a></td>
+        </tr>
+    </table>
+</div>
+<div id="divClose" style="position:'absolute';z-index:99999;left:0;top:0">
+	<table border=0 cellspacing=0 cellpadding=3 width="5%">
+		<tr>
+			<td>&nbsp;&nbsp<a href="#" onclick="self.close();"><font color=white>close</font></a></td>
+		</tr>
+	</table>
+</div>
+<script>
+	// On Window Load
+	function addLoadEvent(func) {  
+		var oldonload = window.onload;  
+		if (typeof window.onload != 'function') {  
+			window.onload = func;  
+		} else {  
+			window.onload = function() {  
+				if (oldonload) {  
+				oldonload();  
+				}  
+				func();  
+			}
+		}
+	}  
+	
+   addLoadEvent(function() {
+		var title = getParameterByName('title');
+		var color = getParameterByName('color');
+		var source = getParameterByName('source');
+
+		document.getElementById("myImage").src = source;
+		document.getElementById("titleText").innerHTML = title;
+		document.title = title;
+		document.getElementById("titleBar").style.backgroundColor = color;
+	});
+	
+	// Gets paramater value from query string
+	function getParameterByName(name, url = window.location.href) {
+		name = name.replace(/[\[\]]/g, '\\$&');
+		var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, ' '));
+	}
+
+	// Function closeMe is designed to close the window with multi-directional shrink feature
+	function closeMe(){
+		self.close();
+		return true;
+	}
+	</script>
+</body>
+</html>
